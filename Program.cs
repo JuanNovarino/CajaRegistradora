@@ -28,6 +28,9 @@ string opcion = "";
 const decimal DescuentoAlto = 0.10m; //etapa 4 variables
 const decimal DescuentoBajo = 0.05m;//etapa 4 variables 
 
+const decimal DescuentoEfectivo = 0.10m; //etapa 5 variables
+const decimal RecargoCredito = 0.15m; //etapa 5 variables
+
 do
 {
     Console.WriteLine("Qué desea hacer?");
@@ -86,10 +89,55 @@ else
 
 decimal totalConDescuento = totalVenta - descuento;
 
+//etapa 5
+string medioPago = "";
+decimal descuentoPago = 0m;
+decimal recargoPago = 0m;
+bool medioValido = false;
+
+Console.WriteLine();
+do
+{
+    Console.WriteLine("Medio de pago:");
+    Console.WriteLine("1 - Efectivo");
+    Console.WriteLine("2 - Débito");
+    Console.WriteLine("3 - Crédito");
+    Console.Write("Opción: ");
+    medioPago = Console.ReadLine();
+
+    switch (medioPago)
+    {
+       case "1":
+            descuentoPago = totalConDescuento * DescuentoEfectivo;
+            medioValido = true;
+            break;
+       
+       case "2":
+            medioValido = true;
+            break;
+
+       case "3":
+            recargoPago = totalConDescuento * RecargoCredito;
+            medioValido = true;
+            break;
+
+        default:
+            Console.WriteLine("Medio de pago inválido. Ingrese 1, 2 o 3.");
+            Console.WriteLine();
+            break;
+
+    }
+
+}while (!medioValido);
+
+decimal totalFinal = totalConDescuento - descuentoPago + recargoPago;
+decimal descuentoTotal = descuento + descuentoPago;
+
 Console.WriteLine();
 Console.WriteLine($"Cantidad de productos cargados: {cantidadProductos}");
 Console.WriteLine($"Total sin decscuentos: ${totalVenta}");
-Console.WriteLine($"Descuento aplicado: ${descuento}");
-Console.WriteLine($"Total final: ${totalConDescuento}");
+Console.WriteLine($"Descuento aplicado: ${descuentoTotal}");
+Console.WriteLine($"Recargo aplicado: ${recargoPago}");
+Console.WriteLine($"Total final: ${totalFinal}");
 Console.ReadKey();
 
