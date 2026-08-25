@@ -24,6 +24,10 @@ decimal totalVenta = 0m;
 int cantidadProductos = 0;
 string opcion = "";
 
+
+const decimal DescuentoAlto = 0.10m; //etapa 4 variables
+const decimal DescuentoBajo = 0.05m;//etapa 4 variables 
+
 do
 {
     Console.WriteLine("Qué desea hacer?");
@@ -63,7 +67,29 @@ do
     }
 } while (opcion != "2");
 
+//etapa 4
+
+decimal descuento = 0m; 
+
+if (totalVenta > 50000m)
+{
+    descuento = totalVenta * DescuentoAlto;
+}
+else if (totalVenta > 20000m)
+{
+    descuento = totalVenta * DescuentoBajo;
+}
+else
+{
+    descuento = 0m;
+}
+
+decimal totalConDescuento = totalVenta - descuento;
+
 Console.WriteLine();
 Console.WriteLine($"Cantidad de productos cargados: {cantidadProductos}");
-Console.WriteLine($"Total: ${totalVenta}");
+Console.WriteLine($"Total sin decscuentos: ${totalVenta}");
+Console.WriteLine($"Descuento aplicado: ${descuento}");
+Console.WriteLine($"Total final: ${totalConDescuento}");
 Console.ReadKey();
+
