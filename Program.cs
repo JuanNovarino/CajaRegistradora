@@ -1,6 +1,8 @@
 ﻿//etapa de 1 
 Console.Write("Ingrese su nombre: ");
 string nombre = Console.ReadLine();
+Console.Write("Ingrese nombre del comercio");
+string NombreComercio = Console.ReadLine();
 
 Console.WriteLine($" === KIOSCO EL RECREO === .");
 Console.WriteLine($"Nombre del cajero: {nombre} .");
@@ -133,11 +135,40 @@ do
 decimal totalFinal = totalConDescuento - descuentoPago + recargoPago;
 decimal descuentoTotal = descuento + descuentoPago;
 
+//etapa 6
+
 Console.WriteLine();
+
+for (int i = 0; i < 30; i++) //primera linea de renglones 
+{
+    Console.Write("-");
+}
+Console.WriteLine();
+Console.WriteLine($"{NombreComercio}");//nombre del comercio
+
+for (int i = 0; i < 30; i++) //segunda linea de renglones 
+{
+    Console.Write("-");
+}
+Console.WriteLine();
+
 Console.WriteLine($"Cantidad de productos cargados: {cantidadProductos}");
 Console.WriteLine($"Total sin decscuentos: ${totalVenta}");
 Console.WriteLine($"Descuento aplicado: ${descuentoTotal}");
 Console.WriteLine($"Recargo aplicado: ${recargoPago}");
+
+for (int i = 0; i < 30; i++) //tercera linea de renglones 
+{
+    Console.Write("-");
+}
+Console.WriteLine();
+
 Console.WriteLine($"Total final: ${totalFinal}");
+
+for (int i = 0; i < 30; i++) //cuarta linea de renglones 
+{
+    Console.Write("-");
+}
+Console.WriteLine();
 Console.ReadKey();
 
